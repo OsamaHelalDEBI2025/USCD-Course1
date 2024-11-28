@@ -32,8 +32,8 @@ public class LifeExpectancy extends PApplet {
 
 	public void setup() {
 		size(800, 600, OPENGL);
-		map = new UnfoldingMap(this, 50, 50, 700, 500, new Google.GoogleMapProvider());
-		MapUtils.createDefaultEventDispatcher(this, map);
+	  	map = new UnfoldingMap(this, 50, 50, 700, 500, new Microsoft.RoadProvider());
+		MapUtils.createDefaultEventDispatcher(this, map);// allow user to intercat with the map in some limited ways like double clicking zooming in map and panning around the world  
 
 		// Load lifeExpectancy data
 		lifeExpByCountry = loadLifeExpectancyFromCSV("LifeExpectancyWorldBankModule3.csv");
@@ -91,6 +91,10 @@ public class LifeExpectancy extends PApplet {
 		}
 
 		return lifeExpMap;
+	}
+
+	public static void main(String[] args) {
+		PApplet.main("demos.LifeExpectancy");
 	}
 
 }

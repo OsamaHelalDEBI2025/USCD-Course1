@@ -17,7 +17,9 @@ import de.fhpotsdam.unfolding.geo.Location;
 import de.fhpotsdam.unfolding.marker.SimplePointMarker;
 import de.fhpotsdam.unfolding.providers.Google;
 import de.fhpotsdam.unfolding.providers.MBTilesMapProvider;
+import de.fhpotsdam.unfolding.providers.Microsoft;
 import de.fhpotsdam.unfolding.providers.OpenStreetMap;
+import de.fhpotsdam.unfolding.providers.Microsoft.MicrosoftProvider;
 import de.fhpotsdam.unfolding.utils.MapUtils;
 
 //Parsing library
@@ -56,12 +58,12 @@ public class EarthquakeCityMapDemo extends PApplet {
 		size(950, 600, OPENGL);
 
 		// Assume online
-		map = new UnfoldingMap(this, 200, 50, 700, 500, new Google.GoogleMapProvider());
+		map = new UnfoldingMap(this, 200, 50, 700, 500, new Microsoft.RoadProvider());
 //		map = new UnfoldingMap(this, 200, 50, 700, 500, new OpenStreetMap.OpenStreetMapProvider() );
 //	    map = new UnfoldingMap(this, 200, 50, 650, 600, new MBTilesMapProvider(mbTilesString));
 
 	    map.zoomToLevel(1);
-	    MapUtils.createDefaultEventDispatcher(this, map);	
+	    MapUtils.createDefaultEventDispatcher(this, map);	// that make the map alive when you make double click it make zoom and drag and drop the man for another area 
 			
 	    
 	    /* For demo purposes */
@@ -71,8 +73,8 @@ public class EarthquakeCityMapDemo extends PApplet {
 	    //STAGE 1: Markers (not associated with Features)
 	    
 	    // Create a marker at a specific location in the world, and format it
-//	    Location valLoc = new Location(-38.14f,-73.03f);
-//	    Marker val = new SimplePointMarker(valLoc);
+//	    Location valLoc = new Location(-38.14f,-73.03f); --> coordanites 
+//	    Marker val = new SimplePointMarker(valLoc); --> 
 //	    map.addMarker(val);
 	    
 	    //STAGE 2: Features with rich data, then Marker
@@ -187,7 +189,7 @@ public class EarthquakeCityMapDemo extends PApplet {
 	}
 	
 	public void draw() {
-	    background(10);
+	    background(150);
 	    map.draw();
 	    addKey();
 	}
@@ -199,5 +201,9 @@ public class EarthquakeCityMapDemo extends PApplet {
 	{	
 		// Remember you can use Processing's graphics methods here
 	
+	}
+
+	public static void main(String[] args) {
+		PApplet.main("demos.EarthquakeCityMapDemo");
 	}
 }
