@@ -6,6 +6,8 @@ import java.util.ArrayList;
 //import java.util.Comparator;
 import java.util.List;
 
+import javax.xml.soap.Text;
+
 //Processing library
 import processing.core.PApplet;
 
@@ -17,6 +19,7 @@ import de.fhpotsdam.unfolding.interactions.KeyboardHandler;
 import de.fhpotsdam.unfolding.marker.SimplePointMarker;
 import de.fhpotsdam.unfolding.providers.Google;
 import de.fhpotsdam.unfolding.providers.MBTilesMapProvider;
+import de.fhpotsdam.unfolding.providers.Microsoft;
 import de.fhpotsdam.unfolding.utils.MapUtils;
 
 //Parsing library
@@ -59,7 +62,7 @@ public class EarthquakeCityMap extends PApplet {
 		    earthquakesURL = "2.5_week.atom"; 	// Same feed, saved Aug 7, 2015, for working offline
 		}
 		else {
-			map = new UnfoldingMap(this, 200, 50, 700, 500, new Google.GoogleMapProvider());
+			map = new UnfoldingMap(this, 200, 50, 700, 500, new Microsoft.RoadProvider());
 			// IF YOU WANT TO TEST WITH A LOCAL FILE, uncomment the next line
 			//earthquakesURL = "2.5_week.atom";
 		}
@@ -156,11 +159,40 @@ public class EarthquakeCityMap extends PApplet {
 	private void addKey() 
 	{	
 		// Remember you can use Processing's graphics methods here
-		new  KeyboardHandler(this , map) ; 
-	
-	}
+		// new  KeyboardHandler(this , map) ; 
+		fill(254,250,239); 
+		rect(width/20 , height/13 , 150 , height/2) ;
+		fill(0 , 0 ,255) ; 
+		ellipse((width/20 +10) , height/10 , 10 , 10);
+		fill(0 , 0 , 0 ) ; 
+		text("below 4.0" , (width/20 +30) , height/7-20 );
+		// textFont(20, 20);
+		fill(255 , 255 ,0) ; 
+		ellipse((width/20 +10) , (height/3)-5 , 15 , 15);
+		fill(0 , 0 , 0 ) ; 
+		text("4+Magnitude" , (width/20 +30) , height/3);
+		fill(255 , 0 ,0) ; 
+		ellipse((width/20 +10) , height/2-7 , 20 , 20);
+		fill(0 , 0 , 0 ) ; 
+		text("5+Magnitude" , (width/20 +30) , height/2);
+		
 
-	public static void main(String[] args) {
+
+		
+		
+		
+				
+				
+		
+			
+			}
+		
+			private void textFont(int i, int j) {
+				// TODO Auto-generated method stub
+				throw new UnsupportedOperationException("Unimplemented method 'textFont'");
+			}
+		
+			public static void main(String[] args) {
 		PApplet.main("module3.EarthquakeCityMap") ;
 	}
 }
