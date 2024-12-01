@@ -13,6 +13,7 @@ import de.fhpotsdam.unfolding.marker.Marker;
 import de.fhpotsdam.unfolding.marker.MultiMarker;
 import de.fhpotsdam.unfolding.providers.Google;
 import de.fhpotsdam.unfolding.providers.MBTilesMapProvider;
+import de.fhpotsdam.unfolding.providers.Microsoft;
 import de.fhpotsdam.unfolding.utils.MapUtils;
 import parsing.ParseFeed;
 import processing.core.PApplet;
@@ -68,7 +69,7 @@ public class EarthquakeCityMap extends PApplet {
 		    earthquakesURL = "2.5_week.atom";  // The same feed, but saved August 7, 2015
 		}
 		else {
-			map = new UnfoldingMap(this, 200, 50, 650, 600, new Google.GoogleMapProvider());
+			map = new UnfoldingMap(this, 200, 50, 650, 600, new Microsoft.RoadProvider());
 			// IF YOU WANT TO TEST WITH A LOCAL FILE, uncomment the next line
 		    //earthquakesURL = "2.5_week.atom";
 		}
@@ -162,12 +163,12 @@ public class EarthquakeCityMap extends PApplet {
 	// set this "country" property already.  Otherwise it returns false.
 	private boolean isLand(PointFeature earthquake) {
 		
-		
+		// 
 		// Loop over all the country markers.  
 		// For each, check if the earthquake PointFeature is in the 
 		// country in m.  Notice that isInCountry takes a PointFeature
 		// and a Marker as input.  
-		// If isInCountry ever returns true, isLand should return true.
+		// If isInCountry ever returns true, isLand should return true. by using `is Country()`
 		for (Marker m : countryMarkers) {
 			// TODO: Finish this method using the helper method isInCountry
 			
@@ -249,5 +250,7 @@ public class EarthquakeCityMap extends PApplet {
 		}
 		return false;
 	}
-
+	public static void main(String[] args) {
+		PApplet.main("module4.EarthquakeCityMap") ; 
+	}
 }

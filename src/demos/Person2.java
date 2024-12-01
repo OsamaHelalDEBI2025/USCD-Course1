@@ -1,4 +1,4 @@
-package demos ; 
+package demos ;
 public class Person2 {
     public void method1() {
         System.out.print("Person 1 ");
